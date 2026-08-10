@@ -1,0 +1,154 @@
+Basic Device Configuration — Lab Guide
+
+📌 Lab Overview
+
+This lab demonstrates the initial configuration, basic security, management addressing, and SSH configuration of a Cisco switch using Cisco Packet Tracer.
+
+Devices
+
+- Cisco switch: SW1
+- Laptop: Laptop0
+
+Addressing
+
+Device| Interface| IP Address| Subnet Mask
+SW1| VLAN 1| 192.168.1.1| 255.255.255.0
+Laptop0| Ethernet| 192.168.1.3| 255.255.255.0
+
+---
+
+Step 1 — Configure Laptop0
+
+Configure Laptop0 with a static IPv4 address:
+
+IP Address:      192.168.1.3
+Subnet Mask:     255.255.255.0
+Default Gateway: 192.168.1.1
+
+---
+
+Step 2 — Access the Switch CLI
+
+Enter privileged EXEC mode:
+
+Switch> enable
+
+Enter global configuration mode:
+
+Switch# configure terminal
+
+---
+
+Step 3 — Configure the Hostname
+
+Change the switch hostname to "SW1":
+
+SW1(config)# hostname SW1
+
+---
+
+Step 4 — Configure the Domain Name
+
+Configure the domain name used for SSH key generation:
+
+SW1(config)# ip domain-name lungelo.com
+
+---
+
+Step 5 — Secure Privileged EXEC Access
+
+Configure an enable secret:
+
+SW1(config)# enable secret <ENABLE_SECRET>
+
+Enable password encryption:
+
+SW1(config)# service password-encryption
+
+---
+
+Step 6 — Create a Local Administrative User
+
+Create the local administrative account:
+
+SW1(config)# username admin secret <ADMIN_PASSWORD>
+
+---
+
+Step 7 — Configure SSH
+
+Generate the RSA keys:
+
+SW1(config)# crypto key generate rsa
+
+Configure the VTY lines:
+
+SW1(config)# line vty 0 15
+SW1(config-line)# password <VTY_PASSWORD>
+SW1(config-line)# login local
+SW1(config-line)# transport input ssh
+SW1(config-line)# exit
+
+Important
+
+SSH was configured during this lab, but SSH connectivity was not tested in the recorded video.
+
+---
+
+Step 8 — Configure the Management Interface
+
+Configure VLAN 1 with the management IP address:
+
+SW1(config)# interface vlan 1
+SW1(config-if)# ip address 192.168.1.1 255.255.255.0
+SW1(config-if)# no shutdown
+SW1(config-if)# exit
+
+---
+
+Step 9 — Save the Configuration
+
+Return to privileged EXEC mode:
+
+SW1(config)# end
+
+Save the running configuration:
+
+SW1# copy running-config startup-config
+
+---
+
+Step 10 — Connectivity Verification
+
+From Laptop0, test connectivity to the switch:
+
+C:\> ping 192.168.1.1
+
+A successful reply confirms IP connectivity between Laptop0 and the switch management interface.
+
+---
+
+🎥 Video Demonstration
+
+The recorded demonstration shows the Basic Device Configuration lab performed in Cisco Packet Tracer.
+
+"Watch the lab demonstration on TikTok" (https://vt.tiktok.com/ZS4768bBG/)
+
+---
+
+🧠 Skills Practiced
+
+- Cisco IOS navigation
+- Switch hostname configuration
+- Basic device security
+- Password encryption
+- Local user authentication
+- SSH configuration
+- VLAN 1 management interface
+- IPv4 addressing
+- Connectivity verification
+- Configuration saving
+
+⚠️ Security
+
+Real passwords are not published in this repository. Passwords have been replaced with placeholders such as "<ENABLE_SECRET>" and "<ADMIN_PASSWORD>".
