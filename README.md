@@ -3,7 +3,8 @@ My practical CCNA networking labs, configurations, troubleshooting, and demonstr
 
 ## 🎥 Video Demonstration
 
-Video demonstration will be linked here.
-https://youtube.com/@lungelotechplay?si=p2wfFZXLktS1Wb66
+Video demonstration will be linked here:
 
-https://tiktok.com/@lungelolamani
+https://youtu.be/gCtG0_wtj-w?si=T_srG5hyzsLeXWna
+
+https://vt.tiktok.com/ZS4768bBG/
